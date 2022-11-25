@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 .App {
     position: relative;
     margin: 0;
@@ -10,7 +14,7 @@
     height: 100vh;
     width: 100vw;
     background-color: rgb(3, 1, 18);
-    z-index: -1;
+    z-index: 0;
 }
 
 .menu {
@@ -21,6 +25,7 @@
     border-radius: 5%;
     box-shadow: 0px 0px 1rem rgb(18, 132, 163);
     background-color: rgba(11, 66, 89, 0.461);
+    z-index: 1;
 }
 
 li {

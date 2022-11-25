@@ -4,6 +4,7 @@ import { useLoader, useFrame } from '@react-three/fiber'
 import MarsMap from '../assets/5672_mars_4k_color.jpg';
 import MarsNormalMap from '../assets/5672_mars_4k_normal.jpg';
 import { TextureLoader } from 'three';
+import { OrbitControls } from '@react-three/drei';
 
 export default function Mars(props) {
 
@@ -26,6 +27,7 @@ export default function Mars(props) {
                     roughness={0.4} 
                     metalness={0.4}
                     />
+                <OrbitControls />
             </mesh>
         </>
     )

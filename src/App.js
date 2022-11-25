@@ -4,6 +4,7 @@ import { Canvas } from '@react-three/fiber'
 import Mars from './components/Mars.js'
 import './App.css'
 import Apod from './components/Apod.js';
+import Camera from './components/Camera.js';
 
 export default function App() {
 
@@ -38,7 +39,9 @@ export default function App() {
             <>
                 {state === 'apod' 
                 ? <Apod />
-                : <></>}
+                : state === 'cam' 
+                    ? <Camera />
+                    : <></>}
             </>
         </div>
     )
