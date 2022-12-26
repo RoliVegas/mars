@@ -7,9 +7,7 @@ import { TextureLoader } from 'three';
 import { OrbitControls } from '@react-three/drei';
 
 export default function Mars(props) {
-
     const [colorMap, normalMap] = useLoader(TextureLoader, [MarsMap, MarsNormalMap]);
-
     const marsRef = useRef();
 
     useFrame(({clock}) => {

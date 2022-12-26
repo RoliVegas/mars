@@ -37,9 +37,9 @@ export default function App() {
                 </Suspense>
             </Canvas>
             <>
-                {state === 'apod' 
+                {state === 'apod'
                 ? <Apod />
-                : state === 'cam' 
+                : state === 'cam'
                     ? <Camera />
                     : <></>}
             </>
