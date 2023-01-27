@@ -5,6 +5,7 @@ import Mars from './components/Mars.js'
 import './App.css'
 import Apod from './components/Apod.js';
 import Camera from './components/Camera.js';
+import Weather from './components/Weather.js';
 
 export default function App() {
 
@@ -37,11 +38,9 @@ export default function App() {
                 </Suspense>
             </Canvas>
             <>
-                {state === 'apod'
-                ? <Apod />
-                : state === 'cam'
-                    ? <Camera />
-                    : <></>}
+                {state === 'apod' && <Apod />}
+                {state === 'cam' && <Camera />}
+                {state === 'weather' && <Weather />}
             </>
         </div>
     )
