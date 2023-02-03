@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react'
 const Camera = () => {
 
     const [data, setData] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
     const [camera, setCamera] = useState(undefined);
-    const [rover, setRover] = useState(undefined);
+    const [photo, setPhoto] = useState(undefined);
 
     const getDateString = () => {
         let date = new Date();
@@ -14,29 +13,31 @@ const Camera = () => {
         return dateString;
     }
 
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    useEffect(() => {
+        if(camera) getImage();
+    }, [camera])
+
     const fetchData = async () => {
-        setIsLoading(true);
-        fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${getDateString()}&api_key=${process.env.REACT_APP_API_KEY}`)
+        fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${getDateString()}&api_key=${process.env.REACT_APP_API_KEY}`)
         .then(response => response.json())
         .then(response => {
-            setData(response);
-            console.log(response);
+            setData(response.photos);
         });
-        setIsLoading(false);
     }
 
     const updateSelection = (type, value) => {
-
         if(type === 'camera') setCamera(value);
-        if(type === 'rover') setRover(value);
-
-        if(rover && camera) {
-            fetchData();
-        } 
     }
 
     const getImage = () => {
-        console.log('Getting image');
+        const photo = data.find((data) => data.camera.name == camera);
+        if(photo) setPhoto(photo);
+        else setPhoto(undefined);
+        console.log(photo);
     }
 
     return (
@@ -44,21 +45,16 @@ const Camera = () => {
             <div className='content'>
                 <h2>Mars Rover Cam:</h2>
                 <select name='camera' onChange={ e => updateSelection('camera', e.target.value)}>
-                    <option value={'fhaz'}>Front Hazard Avoidance Camera</option>
-                    <option value={'rhaz'}>Rear Hazard Avoidance Camera</option>
-                    <option value={'navcam'}>Navigation Camera</option>
+                    <option value={''}>Select camera:</option>
+                    <option value={'FHAZ'}>Front Hazard Avoidance Camera</option>
+                    <option value={'RHAZ'}>Rear Hazard Avoidance Camera</option>
+                    <option value={'NAVCAM'}>Navigation Camera</option>
                 </select>
 
-                <select name='rover' onChange={e => updateSelection('rover', e.target.value)}>
-                    <option value={'curiosity'}>Curiosity</option>
-                    <option value={'opportunity'}>Opportunity</option>
-                    <option value={'spirit'}>Spirit</option>
-                </select>
-
-                {(rover && camera && data && !isLoading) 
+                {(photo)
                 ? <div>
-                    {getImage()}
-                    <img src='' alt='photo'></img>
+                    <p>Photo taken by mars rover Curiosity on {photo.earth_date}.</p>
+                    <img src={photo.img_src} alt='photo'></img>
                 </div>
                 : <div></div>
                 }
