@@ -19,16 +19,43 @@ body {
 
 .menu {
     position: absolute;
+    margin: 2rem;
     color: white;
-    padding: 1rem;
-    margin: 5rem;
-    border-radius: 5%;
-    box-shadow: 0px 0px 1rem rgb(18, 132, 163);
-    background-color: rgba(11, 66, 89, 0.461);
     z-index: 1;
+}
+
+ul {
+    height: 60vh;
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 li {
     cursor: pointer;
+    list-style: none;
+    padding: 1rem;
+    width: 100%;
+    transition: 0.5s;
+    border-radius: 0.5rem;
+    background-color: rgba(18, 132, 163, 0.204);
 }
 
+li:hover {
+    box-shadow: 0px 0px 2rem rgb(18, 132, 163);
+}
+
+.container {
+    position: absolute;
+    top: 10%;
+    min-width: 60%;
+    min-height: 80%;
+    margin-left: 20rem;
+    text-align: center;
+    color: white;
+    border-radius: 5%;
+    box-shadow: 0px 0px 1rem rgb(18, 132, 163);
+    background-color: rgba(11, 66, 89, 0.461);
+    opacity: 0.85;
+}

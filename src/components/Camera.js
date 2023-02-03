@@ -41,7 +41,7 @@ const Camera = () => {
     }
 
     return (
-        <div className='apod-container'>
+        <div className='container'>
             <div className='content'>
                 <h2>Mars Rover Cam:</h2>
                 <select name='camera' onChange={ e => updateSelection('camera', e.target.value)}>
@@ -53,7 +53,7 @@ const Camera = () => {
 
                 {(photo)
                 ? <div>
-                    <p>Photo taken by mars rover Curiosity on {photo.earth_date}.</p>
+                    <p>This photo is taken by Curiosity mars rover on {photo.earth_date}.</p>
                     <img src={photo.img_src} alt='photo'></img>
                 </div>
                 : <div></div>

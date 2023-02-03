@@ -22,7 +22,6 @@ export default function App() {
     return (
         <div className='App'>
             <div className='menu'>
-                <h2>View:</h2>
                 <ul>
                     <li id={'weather'} onClick={handleClick}>Mars Weather</li>
                     <li id={'cam'} onClick={handleClick}>Mars Rover Cam</li>

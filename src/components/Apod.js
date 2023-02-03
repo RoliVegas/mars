@@ -20,7 +20,7 @@ const Apod = () => {
     }, [])
 
     return (
-        <div className='apod-container'>
+        <div className='container'>
             { isLoading || !data 
             ? <div>Loading...</div>
             : <div className='content'>
